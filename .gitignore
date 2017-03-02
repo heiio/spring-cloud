@@ -42,6 +42,7 @@ atlassian-ide-plugin.xml
 classes
 
 # gradle
+build/
 gradle/
 #.gitignore
 LICENSE.txt
