@@ -7,26 +7,8 @@
  * user guide available at https://docs.gradle.org/2.14/userguide/tutorial_java_projects.html
  */
 
-buildscript {
-    ext {
-        springBootVersion = '1.5.1.RELEASE'
-    }
-    repositories {
-        maven { url "http://repo.spring.io/libs-milestone" }
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
-}
-
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-//apply plugin: 'war'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -41,6 +23,14 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web:1.5.1.RELEASE'
     compile 'org.springframework.cloud:spring-cloud-starter-eureka-server:+'
 
+    // 增加配置的
+    compile 'org.springframework.cloud:spring-cloud-starter-bus-amqp:+'
+
+    // 添加 git 配置信息随时刷的问题
+    // 在config-clinet的pom.xml中新增spring-boot-starter-actuator监控模块，其中包含了/refresh刷新API。
+    compile 'org.springframework.boot:spring-boot-starter-actuator:+'
+
+
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
@@ -48,22 +38,3 @@ dependencies {
     testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.1.RELEASE'
 
 }
-
-///////////////war方式打包//////////////////////
-
-//war {
-//    baseName = 'eureka-server'
-//    version = '1.0.0'
-//}
-
-//////////////////jar//////////////////
-
-jar {
-    baseName = 'eureka-server'
-    version = '1.0.0'
-}
-jar.into('META-INF/resources') {
-    from('src/main/webapp')
-}
-
-////////////////////////////////////////
