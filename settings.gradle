@@ -19,6 +19,7 @@ include 'services:webservice'
 rootProject.name = 'spring-cloud'
 
 include 'config-server'
+include 'config-server-kafka'
 include 'config-client'
 include 'api-gateway'
 include 'eureka-server'

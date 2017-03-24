@@ -28,7 +28,7 @@ dependencies {
 
     // 添加spring-cloud-starter-bus-amqp模块
     // 效果更好的是将bus放在配置中心，这个各个服务节点都是公平的
-//    compile 'org.springframework.cloud:spring-cloud-starter-bus-amqp:+'
+    compile 'org.springframework.cloud:spring-cloud-starter-bus-amqp:+'
 
     // 添加 git 配置信息随时刷的问题
     // 在config-clinet的pom.xml中新增spring-boot-starter-actuator监控模块，其中包含了/refresh刷新API。
